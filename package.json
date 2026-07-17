@@ -1,4 +1,6 @@
 {
+  "name": "metas-da-loja",
+  "private": true,
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",

@@ -1,27 +1,30 @@
 :root {
   color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --bg: #f6f8fb;
+  --bg: #fff1f5;
   --panel: #ffffff;
-  --panel-soft: #f8fafc;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --panel-soft: #fdf2f8;
+  --text: #4a044e;
+  --muted: #9d174d;
+  --border: #fbcfe8;
   --positive: #22c55e;
   --negative: #ef4444;
-  --accent: #3b82f6;
-  --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --accent: #f472b6;
+  --accent-strong: #ec4899;
+  --shadow: 0 18px 45px rgba(244, 114, 182, 0.12);
 }
 
 .dark {
   color-scheme: dark;
-  --bg: #0b1020;
-  --panel: #121a2c;
-  --panel-soft: #182238;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --border: #25334d;
-  --shadow: 0 18px 45px rgba(0, 0, 0, 0.26);
+  --bg: #1f0a16;
+  --panel: #2a1220;
+  --panel-soft: #3b162b;
+  --text: #fdf2f8;
+  --muted: #f9a8d4;
+  --border: #6b2148;
+  --accent: #f9a8d4;
+  --accent-strong: #f472b6;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
 }
 
 * {
@@ -62,8 +65,10 @@ button {
   animation: fadeOut 0.55s ease 0.48s forwards;
 }
 
-.loading-screen img {
-  width: min(260px, 62vw);
+.loading-brand {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--accent-strong);
+  letter-spacing: -0.02em;
 }
 
 .loading-screen span {
@@ -90,12 +95,17 @@ button {
   min-width: 0;
 }
 
-.brand img {
+.brand-mark {
   width: 54px;
   height: 54px;
-  object-fit: contain;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
   border-radius: 8px;
-  background: #eef2f7;
+  background: linear-gradient(145deg, #fce7f3, #f9a8d4);
+  color: #9d174d;
+  font-size: 1.35rem;
+  font-weight: 900;
 }
 
 .brand strong,
@@ -217,8 +227,8 @@ h2 {
 
 .primary-button {
   color: #fff;
-  background: var(--accent);
-  box-shadow: 0 14px 26px rgba(59, 130, 246, 0.24);
+  background: var(--accent-strong);
+  box-shadow: 0 14px 26px rgba(236, 72, 153, 0.28);
 }
 
 .secondary-button {
@@ -465,8 +475,8 @@ select {
 
 input:focus,
 select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.13);
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.18);
 }
 
 .segmented-control {
@@ -544,7 +554,7 @@ select:focus {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent), var(--positive));
+  background: linear-gradient(90deg, #f9a8d4, var(--accent-strong));
   transition: width 0.25s ease;
 }
 
@@ -790,7 +800,7 @@ td small svg {
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(59, 130, 246, 0.11), transparent);
+  background: linear-gradient(180deg, rgba(244, 114, 182, 0.14), transparent);
 }
 
 .chart-labels {
@@ -959,7 +969,7 @@ dd {
     inset: 0;
     z-index: 20;
     border: 0;
-    background: rgba(15, 23, 42, 0.52);
+    background: rgba(74, 4, 78, 0.4);
   }
 
   .topbar {

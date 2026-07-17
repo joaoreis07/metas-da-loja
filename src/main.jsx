@@ -26,30 +26,11 @@ import {
 } from 'lucide-react';
 import './styles.css';
 
-const STORAGE_KEY = 'casabella_finance_state_v2';
-
-const seedTransactions = [
-  {
-    id: crypto.randomUUID(),
-    type: 'income',
-    name: 'Venda sob medida',
-    amount: 4800,
-    category: 'Vendas',
-    date: new Date().toISOString().slice(0, 10),
-  },
-  {
-    id: crypto.randomUUID(),
-    type: 'expense',
-    name: 'Fornecedores de material',
-    amount: 1370,
-    category: 'Fornecedores',
-    date: new Date().toISOString().slice(0, 10),
-  },
-];
+const STORAGE_KEY = 'metas_da_loja_state_v1';
 
 const defaultState = {
-  transactions: seedTransactions,
-  monthlyGoal: 8000,
+  transactions: [],
+  monthlyGoal: 0,
   darkMode: false,
 };
 
@@ -330,7 +311,7 @@ function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'casabella-financeiro.csv';
+    link.download = 'metas-da-loja.csv';
     link.click();
     URL.revokeObjectURL(url);
   }
@@ -340,7 +321,7 @@ function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'casabella-backup.json';
+    link.download = 'metas-da-loja-backup.json';
     link.click();
     URL.revokeObjectURL(url);
   }
@@ -375,17 +356,17 @@ function App() {
     <div className="app-shell">
       {!isReady && (
         <div className="loading-screen">
-          <img src="/logo-casabella.png" alt="Casabella" />
-          <span>Carregando financeiro...</span>
+          <strong className="loading-brand">Metas da loja</strong>
+          <span>Carregando...</span>
         </div>
       )}
 
       <aside className={`sidebar ${mobileNavOpen ? 'open' : ''}`}>
         <div className="brand">
-          <img src="/logo-casabella.png" alt="Casabella Sob Medida" />
+          <div className="brand-mark" aria-hidden="true">M</div>
           <div>
-            <strong>Casabella</strong>
-            <span>Finance</span>
+            <strong>Metas da loja</strong>
+            <span>Controle financeiro</span>
           </div>
         </div>
         <nav>
@@ -408,7 +389,7 @@ function App() {
           </button>
           <div>
             <p>Controle financeiro local</p>
-            <h1>Dashboard financeiro</h1>
+            <h1>Metas da loja</h1>
           </div>
           <div className="topbar-actions">
             <button className="secondary-button" onClick={exportCsv}><Download size={17} />CSV</button>
@@ -502,7 +483,7 @@ function App() {
               </label>
               <label>
                 Nome da movimentacao
-                <input value={form.name} onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))} placeholder="Ex: Venda projeto cozinha" />
+                <input value={form.name} onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))} placeholder="Ex: Venda do dia" />
               </label>
               <label>
                 Valor
